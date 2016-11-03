@@ -50,7 +50,7 @@ public class TenAndTwenty {
                 signalperiod = signalperiod);
         return macd[-1] - signal[-1];
     }
-            // şı¨æşışı†éşışı„ç¬¬ä¸şışıè¿èşı, data şı¯äşıä¸şışışıŸçşışı‡çşışı°æ®
+            
     // for each security, determent if buy or not
     public static void  handle_data(ArrayList<Stock> stockList) {
         //EMA(10) > EMA(20) and MACD
