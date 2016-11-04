@@ -56,5 +56,6 @@ public class testStockData {
 		boolean result=test.equals("");
 		assertEquals(false,result);
 	}			
+
 	
 }

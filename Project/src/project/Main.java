@@ -80,7 +80,6 @@ public class Main {
             case 2:
                 System.out.println("You selected " + method);
                 TenAndTwenty.handle_data(stockList);
-                //dfdaf
                 break;
             case 3:
                 System.out.println("You selected " + method);
