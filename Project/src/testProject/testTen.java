@@ -14,6 +14,8 @@ public class testTen {
 
 	@Test
 	public void test1() {
-		Ten.calculatingEXPMA(N, m, oldEXPMA, price);
+		double result=Ten.calculatingEXPMA(234,234.2,234.2,234.2);
+		
+		assertEquals(123,result,0.01);
 	}	
 }

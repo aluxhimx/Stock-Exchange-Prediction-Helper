@@ -84,7 +84,6 @@ public class Main {
             case 3:
                 System.out.println("You selected " + method);
                 Ten.handle_data(stockList);
-
                 break;
             default:
                 break;

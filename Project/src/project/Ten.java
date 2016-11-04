@@ -8,21 +8,6 @@ import java.util.ArrayList;
 
 public class Ten {
 
-    /*public void initialize() {
-
-        g.stocks = list(get_all_securities(['stock'], date = context.current_dt).index);
-        //g.stocks å°±æ˜¯şı‘ä»¬è¦æşıçºµçşışışışışı¡ç¥¨
-        //set_universe(g.stocks);
-    }*/
-
-    /*public void before_trading_start(Context context) {
-        //ç»ä¹°şı¥çşışı¡ç¥¨
-        g.buyList = set();
-
-        //å¾—åˆ°şışışışı¡ç¥¨şı¨æ—¥şı¶çşıä»şı æ¯å¤©şıªéşıè¦åşıä¸şı¬¡, şışı»¥şı¾åœ¨ before_trading_start ä¸şı
-        g.last_df = history(1, '1d', 'close');
-    }*/
-
     //è®¡çşıEXPMA
     public static double calculatingEXPMA(int N, double m, double oldEXPMA, double price) {
         double a = m / (N + 1);
