@@ -15,8 +15,9 @@ public class testStock {
 	public void test1() {
 		Stock stock=new Stock("600221");
 		stock.addToList("0901","19.9","19.61","19.56","20.06");
-		//stock.addToList("0902","19.9","19.61","19.56","20.06");
-		double result=stock.getClosePriceFromDate("0901");
+		stock.addToList("0902","19.61","19.68","19.41","19.86");
+		double result=stock.getClosePriceFromDate("0902");
+		System.out.print(result);
 		assertEquals(19.61,result,0.01);
 	}
 

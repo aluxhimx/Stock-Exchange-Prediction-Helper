@@ -43,13 +43,13 @@ public class TenAndTwenty {
         return exmpa;
     }
     // å®šäþýMACDþý½æ•°
-    public static void  MACD(float macdprices, int fastperiod,int slowperiod,int signalperiod) {
+   /* public static void  MACD(float macdprices, int fastperiod,int slowperiod,int signalperiod) {
         macd, signal, hist = talib.MACD(macdprices,
                 fastperiod = fastperiod,
                 slowperiod = slowperiod,
                 signalperiod = signalperiod);
         return macd[-1] - signal[-1];
-    }
+    }*/
             
     // for each security, determent if buy or not
     public static void  handle_data(ArrayList<Stock> stockList) {
@@ -88,13 +88,13 @@ public class TenAndTwenty {
             EXPMA20_new = exmpa[1];
             //EXPMA50_new = exmpa[2];
             //EXPMA100_new = exmpa[3];
-            double macdprices = attribute_history(security, 40, '1d', ('close'));
+            //double macdprices = attribute_history(security, 40, '1d', ('close'));
             //þý›å»ºMACDä¹°åþýä¿¡å·ï¼Œåþýþý¬äþýä¸ªåþýþý°fast period, slow period, and the signal
             //æ³¨æþýï¼šMACDä½¿ç”¨þý„priceå¿…é¡»þý¯narray
             int fastperiod = 12, slowperiod = 26, signalperiod = 9;
-            double macd = MACD(macdprices['close'].values, fastperiod , slowperiod , signalperiod );
+            //double macd = MACD(macdprices['close'].values, fastperiod , slowperiod , signalperiod );
 
-            if (EXPMA10_new > EXPMA20_new && macd > 0) {
+            if (EXPMA10_new > EXPMA20_new) {
                 buyList.add(stock.getSecurity());
             }
         }
