@@ -1,4 +1,5 @@
 package project;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -23,21 +24,21 @@ public class Main {
         String date = input.next();
         while (date.length() != 4) {
             System.out.println("Input Invalid. Date format: MMdd from 0901 to");
-            date= input.next();
+            date = input.next();
         }
         MyDate.setDate(date);
         System.out.println("Provided prediction:");
-        System.out.printf("1. EMA(10) > EMA(ALL)\n2. EMA(10) > EMA(20) and MACD > 0\n3. MACD\n");
+        System.out.printf("1. EMA(10) > EMA(ALL)\n2. MACD > 0\n3. AverageReturn\n4. Crocodile");
         System.out.println("Please select a prediction:");
         int method = input.nextInt();
 
         while (method < 1 || method > 3) {
             System.out.println("Input Invalid. Please select from the range provided:");
-            method= input.nextInt();
+            method = input.nextInt();
         }
         input.close();
-        gotoMethod(method,stockList);
-
+        gotoMethod(method, stockList);
+        System.out.println("Program ends without errors.");
     }
 
     public static ArrayList<Stock> inputData(File file) throws FileNotFoundException {
@@ -79,16 +80,26 @@ public class Main {
                 break;
             case 2:
                 System.out.println("You selected " + method);
-                TenAndTwenty.handle_data(stockList);
+                MACD.handle_data(stockList);
+
                 break;
             case 3:
                 System.out.println("You selected " + method);
-                Ten.handle_data(stockList);
+                AverageReturn.handle_data(stockList);
+
+                break;
+
+            case 4:
+                System.out.println("You selected " + method);
+                Crocodile.handle_data(stockList);
+
                 break;
             default:
                 break;
         }
     }
+
+
 }
 
 

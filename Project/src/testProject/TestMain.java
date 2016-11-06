@@ -2,12 +2,17 @@ package testProject;
 
 import static org.junit.Assert.*;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
+import project.ExDateNotFound;
 import project.Main;
 import project.Stock;
 import project.StockData;
@@ -15,8 +20,23 @@ import project.Ten;
 
 public class TestMain {
 
+
+	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+	private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+
+	@Before
+	public void setUpStreams() {
+	    System.setOut(new PrintStream(outContent));
+	    System.setErr(new PrintStream(errContent));
+	}
+
+	@After
+	public void cleanUpStreams() {
+	    System.setOut(null);
+	    System.setErr(null);
+	}
 	@Test
-	public void test1() throws FileNotFoundException {
+	public void testInputData() throws FileNotFoundException {
 		File file=new File("stock_data1.txt");
 		ArrayList<Stock> result=Main.inputData(file);
 		
@@ -39,4 +59,22 @@ public class TestMain {
 		
 		assertEquals(expectedResult,result);
 	}	
+	
+	@Test(expected=FileNotFoundException.class)
+	public void testFileNotFound() throws FileNotFoundException {
+		File file=new File("123.txt");
+		ArrayList<Stock> result=Main.inputData(file);
+	}	
+
+//	@Test
+//	public void testGotoMethod() {
+//		class StubTen extends Ten{
+//			public static void handle_data(ArrayList<Stock> stockList){
+//				
+//			}
+//		}
+//		ArrayList<Stock> stockList=new ArrayList<Stock>();
+//		Main.gotoMethod(1, stockList);
+//		assertEquals("You selected 1",outContent.toString());
+//	}		
 }

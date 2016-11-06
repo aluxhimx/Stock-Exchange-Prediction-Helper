@@ -1,21 +1,18 @@
-package project;
 /**
  * Created by Him on 10/3/2016.
  */
 //import math;
-
+package project;
 import java.util.ArrayList;
 
 public class Ten {
 
-    //è®¡çþýEXPMA
     public static double calculatingEXPMA(int N, double m, double oldEXPMA, double price) {
         double a = m / (N + 1);
         double newEXPMA = a * price + (1 - a) * oldEXPMA;
         return newEXPMA;
     }
 
-    //è®¡çþýEXPMA10,20,50,100,150þý¥çþýþýþý
     public static double[] EXPMA(int N1, int N2, int N3, int N4, double m, double EXPMA10_old, double EXPMA20_old, double EXPMA50_old, double EXPMA100_old, double price) {
         double EXPMA10_new = calculatingEXPMA(N1, m, EXPMA10_old, price);
         double EXPMA20_new = calculatingEXPMA(N2, m, EXPMA20_old, price);
@@ -36,8 +33,13 @@ public class Ten {
         ArrayList<String> buyList = new ArrayList<>();
 
         for (Stock stock : stockList) {
-
-            double close_price = stock.getClosePriceFromDate(MyDate.getDate());
+            double close_price;
+            try{
+                close_price = stock.getClosePriceFromDate(MyDate.getDate());
+            }catch (ExDateNotFound e){
+                System.out.println(e);
+                return;
+            }
             //last_close = g.last_df[security][0];
             //currnt_price = data[security].close;
             double EXPMA10_old, EXPMA20_old, EXPMA50_old, EXPMA100_old, EXPMA10_new, EXPMA20_new, EXPMA50_new, EXPMA100_new;

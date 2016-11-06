@@ -1,7 +1,8 @@
-package project;
 /**
  * Created by Him on 10/10/2016.
  */
+package project; 
+ 
 public class StockData {
     private String date;
     private double open_price;
@@ -32,12 +33,12 @@ public class StockData {
 
     @Override
     public boolean equals (Object in) {
-        System.out.println("reached here");
+        //System.out.println("reached here");
         if(in == null) {
             return false;
         }else if(in instanceof String) {
             String date = (String) in;
-            return date == this.date;
+            return date.equals(this.date);
         }else {
             return false;
         }

@@ -1,4 +1,5 @@
 package project;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -10,6 +11,7 @@ public class Stock {
 
     private String security;
     private ArrayList<StockData> dataList;
+    private ArrayList<String> dateList;
 
     public Stock(String security) {
         this.security = security;
@@ -26,8 +28,11 @@ public class Stock {
         return "Security: "+ security + ", Data: " + dataList;
     }
 
-    public double getClosePriceFromDate(String date) {
+    public double getClosePriceFromDate(String date) throws ExDateNotFound {
         StockData res = searchFromListByDate(date);
+        if (res == null) {
+            throw new ExDateNotFound("The input date is not a valid date. (date:" + MyDate.getDate() + ")");
+        }
         return res.getClose_price();
     }
 
@@ -36,13 +41,12 @@ public class Stock {
     }
 
     private StockData searchFromListByDate(String date) {
+
         StockData res = null;
         for (StockData x : this.dataList) {
-            if(x.equals(date))
+            if(x.equals(date)){
                 res = x;
-            else{
-                System.out.println("The input date is not a valid date. (date:"+MyDate.getDate()+")");
-                return null;
+                return res;
             }
         }
         return res;
@@ -65,4 +69,5 @@ public class Stock {
 
         return res;
     }
+
 }

@@ -1,7 +1,8 @@
-package project;
 /**
  * Created by Him on 10/10/2016.
  */
+package project; 
+ 
 public class MyDate {
     private static String date;
 
